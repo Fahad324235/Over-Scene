@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player with Playlist and Ads</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+  }
+  .video-player {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #34495e;
+    border-radius: 8px;
+    position: relative;
+    top: 0;
+  }
+  .advertisement {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .advertisement img {
+    width: 100%;
+    max-width: 728px;
+    height: auto;
+    border-radius: 8px;
+  }
+  #main-video, .video-iframe {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .fixed-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 800px;
+    z-index: 1000;
+    background-color: #34495e;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid #1abc9c;
+    border-radius: 8px 8px 0 0;
+  }
+  .video-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+  }
+  .video-list-item {
+    cursor: pointer;
+    padding: 5px;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  .video-list-item:hover {
+    background-color: #16a085;
+  }
+  .video-thumbnail {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .video-title {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #2c3e50;
+  }
+  .thumbnail-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    display: none;
+  }
+  .thumbnail-overlay::after {
+    content: '\25BA'; /* Unicode character for play button */
+    font-size: 60px;
+    color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="video-player">
+  <div class="fixed-container">
+    <div class="advertisement">
+      <!-- Replace this with your advertisement content or ad code -->
+      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
+    </div>
+    <div id="video-container">
+      <div id="thumbnail-overlay" class="thumbnail-overlay"></div>
+      <video id="main-video" controls>
+        <source id="main-video-source" src="https://www.febspot.com/get_file/24/f2439606f63aa397af8b3fd83a7c41ef/2308000/2308478/2308478_720p.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <div class="video-list">
+    <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/24/f2439606f63aa397af8b3fd83a7c41ef/2308000/2308478/2308478_720p.mp4', 'https://i.ytimg.com/vi/fEpoSrAfbcU/sddefault.jpg')">
+      <img src="https://i.ytimg.com/vi/fEpoSrAfbcU/sddefault.jpg" alt="Video 1 Thumbnail" class="video-thumbnail">
+      <div class="video-title">Sohna Usman Ghani r.a - سوہنا عثمان غنی رضی اللہ - Jam Ismail Siddiqui - Superhit Viral Manqabat</div>
+    </div>
+    <div class="advertisement">
+      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
+    </div>
+    <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/25/f54992a5f34dee69d705685c7404833d/2293000/2293540/2293540_720p.mp4', 'https://i.ytimg.com/vi/6adnW--HY6A/sddefault.jpg')">
+      <img src="https://i.ytimg.com/vi/6adnW--HY6A/sddefault.jpg" alt="Video 2 Thumbnail" class="video-thumbnail">
+      <div class="video-title">Tajdar-e-Haram | Naat | By Atif Aslam</div>
+    </div>
+    <div class="advertisement">
+      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
+    </div>
+    <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/25/e8e2480a9f22cfc706c9efa810217b56/2302000/2302015/2302015_720p.mp4', 'https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg')">
+      <img src="https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg" alt="Video 3 Thumbnail" class="video-thumbnail">
+      <div class="video-title">Maqam e Mohammad - Naat Official Video - Hafiz Abu Bakar Official</div>
+    </div>
+    <div class="advertisement">
+      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
+    </div>
+    <div class="video-list-item" onclick="changeVideo('https://drive.google.com/file/d/1UYZHUWf5IMdwcrJVizN4Xa5FaSoYVtc3/preview', 'https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg')">
+      <img src="https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg" alt="Video Thumbnail" class="video-thumbnail">
+      <div class="video-title">Your Video Title Here</div>
+    </div>
+    <div class="advertisement">
+      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
+    </div>
+    <!-- Add more video list items and advertisements as needed -->
+  </div>
+</div>
+
+<script>
+  function changeVideo(videoSrc, thumbnailSrc) {
+    var videoContainer = document.getElementById('video-container');
+    var thumbnailOverlay = document.getElementById('thumbnail-overlay');
+    if (videoSrc.includes("drive.google.com")) {
+      videoContainer.innerHTML = '<iframe id="main-video" class="video-iframe" src="' + videoSrc + '" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
+      thumbnailOverlay.style.display = 'none';
+    } else {
+      videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + videoSrc + '" type="video/mp4">Your browser does not support the video tag.</video>';
+      thumbnailOverlay.style.display = 'none';
+    }
+    localStorage.setItem('lastVideo', videoSrc);
+    localStorage.setItem('lastThumbnail', thumbnailSrc);
+  }
+
+  function loadLastVideo() {
+    var lastVideo = localStorage.getItem('lastVideo');
+    var lastThumbnail = localStorage.getItem('lastThumbnail');
+    var thumbnailOverlay = document.getElementById('thumbnail-overlay');
+    if (lastVideo && lastThumbnail) {
+      var videoContainer = document.getElementById('video-container');
+      if (lastVideo.includes("drive.google.com")) {
+        videoContainer.innerHTML = '<iframe id="main-video" class="video-iframe" src="' + lastVideo + '" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
+      } else {
+        videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + lastVideo + '" type="video/mp4">Your browser does not support the video tag.</video>';
+      }
+      thumbnailOverlay.style.backgroundImage = 'url(' + lastThumbnail + ')';
+      thumbnailOverlay.style.display = 'block';
+    }
+  }
+
+  document.getElementById('thumbnail-overlay').addEventListener('click', function() {
+    this.style.display = 'none';
+    var mainVideo = document.getElementById('main-video');
+    if (mainVideo.tagName === 'VIDEO') {
+      mainVideo.play();
+    }
+  });
+
+  window.onload = loadLastVideo;
+</script>
+</body>
+</html>
