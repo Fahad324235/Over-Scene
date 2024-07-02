@@ -12,21 +12,20 @@
     color: #ecf0f1;
   }
   .video-player {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #34495e;
     border-radius: 8px;
     position: relative;
-    top: 0;
   }
   .advertisement {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
-  .advertisement img {
+  .advertisement iframe {
     width: 100%;
-    max-width: 728px;
+    max-width: 320px; /* Adjust ad size for mobile */
     height: auto;
     border-radius: 8px;
   }
@@ -39,10 +38,9 @@
     position: sticky;
     top: 0;
     width: 100%;
-    max-width: 800px;
     z-index: 1000;
     background-color: #34495e;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     border-bottom: 2px solid #1abc9c;
     border-radius: 8px 8px 0 0;
@@ -50,7 +48,7 @@
   .video-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 30px;
+    grid-gap: 10px;
     margin-top: 10px;
   }
   .video-list-item {
@@ -70,7 +68,7 @@
   }
   .video-title {
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 12px;
     color: #2c3e50;
   }
   .thumbnail-overlay {
@@ -84,7 +82,7 @@
   }
   .thumbnail-overlay::after {
     content: '\25BA'; /* Unicode character for play button */
-    font-size: 60px;
+    font-size: 40px;
     color: rgba(255, 255, 255, 0.8);
     position: absolute;
     top: 50%;
@@ -95,93 +93,70 @@
 </style>
 </head>
 <body>
+<p style="text-align: center;">&nbsp;<span style="font-family: arial; font-size: large;"><b>Best Scenes</b></span></p>
+<p style="text-align: center;">&nbsp;<span style="font-size: xx-small;">Unlimited Movies, Videos Scene Free Watch</span></p>
+<div class="advertisement">
+  <iframe data-aa='2335859' src='https://ad.a-ads.com/2335859?size=320x50' style='width:320px; height:50px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
+</div>
 <div class="video-player">
   <div class="fixed-container">
-    <div class="advertisement">
-      <!-- Replace this with your advertisement content or ad code -->
-      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
-    </div>
+    <br>
     <div id="video-container">
       <div id="thumbnail-overlay" class="thumbnail-overlay"></div>
-      <video id="main-video" controls>
-        <source id="main-video-source" src="https://www.febspot.com/get_file/24/f2439606f63aa397af8b3fd83a7c41ef/2308000/2308478/2308478_720p.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div id="main-video-placeholder" class="video-iframe" style="width: 100%; height: auto; border-radius: 8px; text-align: center; line-height: 300px; background-color: #1abc9c; color: #ecf0f1;">
+        Play Now
+      </div>
+    </div>
+    <br>
+    <div class="advertisement">
+      <iframe data-aa='2335859' src='https://ad.a-ads.com/2335859?size=320x50' style='width:320px; height:50px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
     </div>
   </div>
+  <br>
+  <br>
   <div class="video-list">
-    <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/24/f2439606f63aa397af8b3fd83a7c41ef/2308000/2308478/2308478_720p.mp4', 'https://i.ytimg.com/vi/fEpoSrAfbcU/sddefault.jpg')">
-      <img src="https://i.ytimg.com/vi/fEpoSrAfbcU/sddefault.jpg" alt="Video 1 Thumbnail" class="video-thumbnail">
+    <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/27/eec487edc6e2e10ea25b178fba5798e9/2317000/2317186/2317186_720p.mp4')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT51UdJCAR6ImxHn3U1jX1QbEsq0_vlzeiZe1OcR3zVuQl2Reqi5XXyLqg&s=10" alt="Video 1 Thumbnail" class="video-thumbnail">
       <div class="video-title">Sohna Usman Ghani r.a - سوہنا عثمان غنی رضی اللہ - Jam Ismail Siddiqui - Superhit Viral Manqabat</div>
     </div>
-    <div class="advertisement">
-      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
-    </div>
+    <br>
     <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/25/f54992a5f34dee69d705685c7404833d/2293000/2293540/2293540_720p.mp4', 'https://i.ytimg.com/vi/6adnW--HY6A/sddefault.jpg')">
       <img src="https://i.ytimg.com/vi/6adnW--HY6A/sddefault.jpg" alt="Video 2 Thumbnail" class="video-thumbnail">
       <div class="video-title">Tajdar-e-Haram | Naat | By Atif Aslam</div>
     </div>
-    <div class="advertisement">
-      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
-    </div>
+    <br>
     <div class="video-list-item" onclick="changeVideo('https://www.febspot.com/get_file/25/e8e2480a9f22cfc706c9efa810217b56/2302000/2302015/2302015_720p.mp4', 'https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg')">
       <img src="https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg" alt="Video 3 Thumbnail" class="video-thumbnail">
       <div class="video-title">Maqam e Mohammad - Naat Official Video - Hafiz Abu Bakar Official</div>
     </div>
-    <div class="advertisement">
-      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
-    </div>
-    <div class="video-list-item" onclick="changeVideo('https://drive.google.com/file/d/1UYZHUWf5IMdwcrJVizN4Xa5FaSoYVtc3/preview', 'https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg')">
-      <img src="https://i.ytimg.com/vi/v_u48zcBcac/sddefault.jpg" alt="Video Thumbnail" class="video-thumbnail">
-      <div class="video-title">Your Video Title Here</div>
-    </div>
-    <div class="advertisement">
-      <img src="https://via.placeholder.com/728x90" alt="Advertisement">
-    </div>
-    <!-- Add more video list items and advertisements as needed -->
   </div>
+</div>
+<br>
+<div class="advertisement">
+  <iframe data-aa='2335859' src='https://ad.a-ads.com/2335859?size=320x50' style='width:320px; height:50px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
 </div>
 
 <script>
-  function changeVideo(videoSrc, thumbnailSrc) {
+  function changeVideo(videoSrc) {
     var videoContainer = document.getElementById('video-container');
     var thumbnailOverlay = document.getElementById('thumbnail-overlay');
-    if (videoSrc.includes("drive.google.com")) {
-      videoContainer.innerHTML = '<iframe id="main-video" class="video-iframe" src="' + videoSrc + '" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
-      thumbnailOverlay.style.display = 'none';
-    } else {
-      videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + videoSrc + '" type="video/mp4">Your browser does not support the video tag.</video>';
-      thumbnailOverlay.style.display = 'none';
-    }
+    videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + videoSrc + '" type="video/mp4">Your browser does not support the video tag.</video>';
+    thumbnailOverlay.style.display = 'none';
     localStorage.setItem('lastVideo', videoSrc);
-    localStorage.setItem('lastThumbnail', thumbnailSrc);
   }
 
   function loadLastVideo() {
     var lastVideo = localStorage.getItem('lastVideo');
-    var lastThumbnail = localStorage.getItem('lastThumbnail');
-    var thumbnailOverlay = document.getElementById('thumbnail-overlay');
-    if (lastVideo && lastThumbnail) {
-      var videoContainer = document.getElementById('video-container');
-      if (lastVideo.includes("drive.google.com")) {
-        videoContainer.innerHTML = '<iframe id="main-video" class="video-iframe" src="' + lastVideo + '" allow="autoplay" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
-      } else {
-        videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + lastVideo + '" type="video/mp4">Your browser does not support the video tag.</video>';
-      }
-      thumbnailOverlay.style.backgroundImage = 'url(' + lastThumbnail + ')';
-      thumbnailOverlay.style.display = 'block';
+    var videoContainer = document.getElementById('video-container');
+    if (lastVideo) {
+      videoContainer.innerHTML = '<video id="main-video" class="video-iframe" controls><source src="' + lastVideo + '" type="video/mp4">Your browser does not support the video tag.</video>';
     }
   }
 
-  document.getElementById('thumbnail-overlay').addEventListener('click', function() {
-    this.style.display = 'none';
-    var mainVideo = document.getElementById('main-video');
-    if (mainVideo.tagName === 'VIDEO') {
-      mainVideo.play();
-    }
+  document.addEventListener('DOMContentLoaded', function() {
+    loadLastVideo();
   });
-
-  window.onload = loadLastVideo;
 </script>
+
 </body>
 </html>
